@@ -12,8 +12,6 @@ install:
     # check CoSA dependencies
     - docker exec -i garnet bash -c "pysmt-install --check"
 
-    - git clone https://github.com/StanfordVLSI/Genesis2.git
-    - rm -rf Genesis2/Genesis2Tools/PerlLibs/ExtrasForOldPerlDistributions/Compress
     - docker cp Genesis2 garnet:/Genesis2
 
 script:
