@@ -12,8 +12,6 @@ install:
     # check CoSA dependencies
     - docker exec -i garnet bash -c "pysmt-install --check"
 
-    - docker cp Genesis2 garnet:/Genesis2
-
 script:
     - docker exec -i garnet bash -c "/garnet/.travis/run.sh"
 
