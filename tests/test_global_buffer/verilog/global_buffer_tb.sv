@@ -27,20 +27,17 @@ clocker clocker (.Clk(clk), .Reset(reset));
 
 
     initial begin
-        $dumpfile("glb_tb.vcd");
-        $dumpvars(0, global_buffer_tb);
         host_rd_en = 0;
         host_wr_strb = 0;
         host_wr_addr = 0;
         host_wr_data = 0;
-        #503 $dumpall;
+        #503 
         host_wr_strb = 8'hFF;
         host_wr_addr = 32'h0000000F;
         host_wr_data = 64'h12345678;
 
         #10
         host_wr_strb = 8'h0;
-
 
         #10
         #10
