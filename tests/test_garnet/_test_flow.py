@@ -488,18 +488,18 @@ def test_flow(args):
         shift_dr(addr, jtag_inst_bits)
 
     # Test A050
-    jtag_addr_data(JTAG_WRITE_A050, 0xC0DE)
+    # jtag_addr_data(JTAG_WRITE_A050, 0xC0DE)
 
     # Switch clocks
-    jtag_data_addr(1, JTAG_SWITCH_CLK)
+    # jtag_data_addr(1, JTAG_SWITCH_CLK)
 
     # wait until the system clock stabilizes
-    loop = tester.rawloop('top->v__DOT__GlobalController_32_32_inst0__DOT__global_controller_inst0__DOT__sys_clk_activated == 0')
-    loop.eval()
-    loop.poke(tester._circuit.jtag_tck, 1)
-    loop.eval()
-    loop.poke(tester._circuit.jtag_tck,  0)
-    loop.eval()
+    # loop = tester.rawloop('top->v__DOT__GlobalController_32_32_inst0__DOT__global_controller_inst0__DOT__sys_clk_activated == 0')
+    # loop.eval()
+    # loop.poke(tester._circuit.jtag_tck, 1)
+    # loop.eval()
+    # loop.poke(tester._circuit.jtag_tck,  0)
+    # loop.eval()
 
     tester.circuit.clk_in = 0
 
@@ -586,24 +586,24 @@ def test_flow(args):
     rng = random.seed(seed)
     print("Seed was:", seed)
 
-    # commands = [
-    #     # Verify AXI working with TEST_REG
-    #     WRITE_REG(TEST_REG, 0xDEADBEEF),
-    #     READ_REG(TEST_REG, 0xDEADBEEF),
-    # ]
+    commands = [
+        # Verify AXI working with TEST_REG
+        WRITE_REG(TEST_REG, 0xDEADBEEF),
+        READ_REG(TEST_REG, 0xDEADBEEF),
+    ]
 
-    commands = []
-    with open('config.json', 'r') as f:
-        reglist = json.load(f)
-        for reg in reglist:
-            for _ in range(10):
-                val = random.randrange(reg['range'])
-                commands += [
-                    WRITE_REG(CONFIG_ADDR_REG, reg['addr']),
-                    WRITE_REG(CONFIG_DATA_REG, val),
-                    # WRITE_REG(CONFIG_ADDR_REG, reg['addr']),
-                    READ_REG(CONFIG_DATA_REG, val),
-                ]
+    # commands = []
+    # with open('config.json', 'r') as f:
+    #     reglist = json.load(f)
+    #     for reg in reglist:
+    #         for _ in range(10):
+    #             val = random.randrange(reg['range'])
+    #             commands += [
+    #                 WRITE_REG(CONFIG_ADDR_REG, reg['addr']),
+    #                 WRITE_REG(CONFIG_DATA_REG, val),
+    #                 # WRITE_REG(CONFIG_ADDR_REG, reg['addr']),
+    #                 READ_REG(CONFIG_DATA_REG, val),
+    #             ]
 
     # commands = [
     #     # Stall the CGRA

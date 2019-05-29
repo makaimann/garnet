@@ -10,7 +10,7 @@ cd `pip show pyverilog | grep Location | awk '{print $2}'`
 git checkout patch-1
 cd -
 
-python garnet.py --width 8 --height 2 --verilog
+python garnet.py --width 8 --height 4 --verilog
 
 cd tests/build
 ln -s ../../genesis_verif/* .
