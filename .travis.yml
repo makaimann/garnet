@@ -19,7 +19,7 @@ install:
 
 script:
     # - docker exec -i garnet bash -c "/garnet/.travis/run.sh"
-    docker exec -i garnet bash -c "CoSA --problems ./tests/test_pe_tile_formal/problem.txt -v 3"
+    docker exec -i garnet bash -c "cd garnet && CoSA --problems ./tests/test_pe_tile_formal/problem.txt -v 3"
 
 after_success:
     - docker exec -i garnet bash -c "cd /garnet/ && coveralls"
