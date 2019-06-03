@@ -20,8 +20,8 @@ install:
     - docker cp Genesis2 garnet:/Genesis2
 
 script:
-    # - docker exec -i garnet bash -c "/garnet/.travis/run.sh"
-    - docker exec -i garnet bash -c "cd garnet && python garnet.py --verilog && CoSA --problems ./tests/test_pe_tile_formal/problem.txt -v 3"
+    - docker exec -i garnet bash -c "/garnet/.travis/run.sh"
+    # - docker exec -i garnet bash -c "cd garnet && python garnet.py --verilog && CoSA --problems ./tests/test_pe_tile_formal/problem.txt -v 3"
     # - docker exec -i garnet bash -c "cd garnet && yosys -p \"read_verilog -nomem2reg -sv ./garnet.v ./tests/AN2D0BWP16P90.sv ./tests/AO22D0BWP16P90.sv ./peak_core/CW_fp_mult.v ./peak_core/CW_fp_add.v; prep -top Tile_PE; hierarchy -check; memory -nomap; async2sync; flatten;; setundef -undriven -anyseq; write_btor __yosys_verilog__.btor2\""
 
 after_success:

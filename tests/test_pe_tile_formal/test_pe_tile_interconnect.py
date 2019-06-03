@@ -4,8 +4,8 @@ import os
 import subprocess
 
 GARNET_VERILOG_FILENAME = os.path.join(os.path.dirname(__file__),
-                               os.path.pardir, os.path.pardir,
-                               "garnet.v")
+                                       os.path.pardir, os.path.pardir,
+                                       "garnet.v")
 
 PROBLEM_FILENAME = os.path.join(os.path.dirname(__file__),
                                 "problem.txt")
