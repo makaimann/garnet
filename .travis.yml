@@ -10,6 +10,7 @@ install:
     - docker exec -i garnet bash -c "pip install pytest python-coveralls"
     - docker exec -i garnet bash -c "pip install pytest-cov pytest-codestyle z3-solver" 
     # check CoSA dependencies
+    - docker exec -i garnet bash -c "pysmt-install --confirm-agreement --msat"
     - docker exec -i garnet bash -c "pysmt-install --check"
 
     - git clone https://github.com/StanfordVLSI/Genesis2.git
